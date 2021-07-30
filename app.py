@@ -28,7 +28,7 @@ trans_transformer = pickle.load(trans_pickle_in)
 def hello():
     return 'welcome!'
 
-@app.route('/predict')
+@app.route('/predict', methods = ['POST'])
 def predict_price():
     web_make = request.args.get('make')
     mke = int(make_transformer.transform([web_make])[0])
