@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  const arr = [
+  const cars = [
     {
       make: "ford",
       model: ["focus", "fiesta"],
@@ -9,22 +9,19 @@ $(document).ready(function () {
       model: ["corolla", "camry"],
     },
   ];
-
-  toggleOptions();
-
+ 
+toggleOptions();
+ // function to change the model options based on make input selection
   function toggleOptions() {
-    $("#make").on("change", () => {
+     $("#make").on("change", () => {
       $('#model').empty();
-      arr.forEach((a) => {
-        if ($("#make").val().toLowerCase() === a.make) {
-          a.model.forEach((i) => {
-            console.log(i);
-            $("#model").append(`<option value ="${i}">${i}</option>`);
+      cars.forEach((car) => {
+        if ($("#make").val().toLowerCase() === car.make) {
+          car.model.forEach((m) => {
+            $("#model").append(`<option value ="${m}">${m}</option>`);
           });
         }
       });
     });
-
-    $("#model").empty();
-  }
+}
 });
