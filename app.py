@@ -1,6 +1,7 @@
 import flask
 import pandas as pd
 import pickle
+import sklearn.preprocessing._label
 from flask import Flask,render_template, request
 
 app = Flask(__name__)
@@ -30,27 +31,27 @@ def hello():
 
 @app.route('/predict', methods = ['POST'])
 def predict_price():
-    web_make = request.args.get('make')
+    web_make = request.args.get('Make')
     mke = int(make_transformer.transform([web_make])[0])
 
-    web_model = request.args.get('model')
+    web_model = request.args.get('Model')
     mdel = int(model_transformer.transform([web_model])[0])
 
-    yr = int(request.args.get('year'))
+    yr = int(request.args.get('Year'))
 
-    web_trans = request.args.get('transmission')
+    web_trans = request.args.get('Transmission')
     trans = int(trans_transformer.transform([web_trans])[0])
 
-    miles = int(request.args.get('mileage'))
+    miles = int(request.args.get('Mileage'))
 
-    web_fuel = request.args.get('fuelType')
+    web_fuel = request.args.get('Fuel')
     fuel = int(fuel_transformer.transform([web_fuel])[0])
 
-    engine=float(request.args.get('engineSize'))
+    engine=float(request.args.get('EngineSize'))
 
-    tx = float(request.args.get('tax'))
+    tx = float(request.args.get('Tax'))
 
-    mpgal = float(request.args.get('mpg'))
+    mpgal = float(request.args.get('Mpg'))
 
     data = {'year':yr,'transmission':1,'mileage':miles,'fuelType':fuel,'tax':tx,
                                'mpg':mpgal,'engineSize':engine,'make':mke,'model':mdel}
