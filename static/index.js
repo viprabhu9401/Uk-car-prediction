@@ -11,6 +11,7 @@ $(document).ready(function () {
   ];
  
 toggleOptions();
+incrementYear();
  // function to change the model options based on make input selection
   function toggleOptions() {
      $("#make").on("change", () => {
@@ -23,5 +24,15 @@ toggleOptions();
         }
       });
     });
+}
+function incrementYear(){
+    const year = $('#year')
+    const currentYear =(new Date()).getFullYear()
+    for(i=1990; i<=currentYear; i++){
+      const option = $("<option></option>");
+      option.html(i);
+      option.val(i);
+      year.append(option);
+    }
 }
 });
