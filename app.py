@@ -31,27 +31,27 @@ def hello():
 
 @app.route('/predict', methods = ['POST'])
 def predict_price():
-    web_make = request.args.get('Make')
+    web_make = request.form['make']
     mke = int(make_transformer.transform([web_make])[0])
 
-    web_model = request.args.get('Model')
+    web_model = request.form['model']
     mdel = int(model_transformer.transform([web_model])[0])
 
-    yr = int(request.args.get('Year'))
+    yr = int(request.form['year'])
 
-    web_trans = request.args.get('Transmission')
+    web_trans = request.form['transmission']
     trans = int(trans_transformer.transform([web_trans])[0])
 
-    miles = int(request.args.get('Mileage'))
+    miles = int(request.form['mileage'])
 
-    web_fuel = request.args.get('Fuel')
+    web_fuel = request.form['fuel']
     fuel = int(fuel_transformer.transform([web_fuel])[0])
 
-    engine=float(request.args.get('EngineSize'))
+    engine=float(request.form['engineSize'])
 
-    tx = float(request.args.get('Tax'))
+    tx = float(request.form['tax'])
 
-    mpgal = float(request.args.get('Mpg'))
+    mpgal = float(request.form['mpg'])
 
     data = {'year':yr,'transmission':1,'mileage':miles,'fuelType':fuel,'tax':tx,
                                'mpg':mpgal,'engineSize':engine,'make':mke,'model':mdel}
