@@ -2,7 +2,7 @@ import flask
 import pandas as pd
 import pickle
 import sklearn.preprocessing._label
-from flask import Flask,render_template, request
+from flask import Flask,render_template, request, redirect, url_for
 
 app = Flask(__name__)
 ## loading the model
@@ -29,7 +29,7 @@ trans_transformer = pickle.load(trans_pickle_in)
 def hello():
     return 'welcome!'
 
-@app.route('/predict', methods = ['POST'])
+@app.route('/predict/<form>', methods = ['POST'])
 def predict_price():
     web_make = request.form['make']
     mke = int(make_transformer.transform([web_make])[0])
@@ -57,7 +57,9 @@ def predict_price():
                                'mpg':mpgal,'engineSize':engine,'make':mke,'model':mdel}
     test_df = pd.DataFrame(data,index=[0])
     predicted_price = predictor.predict(test_df)[0]
-    return "the predicted car price is " + str(predicted_price)
+
+    return render_template('index.html', prediction=str(predicted_price))
+    ##return "the predicted car price is " + str(predicted_price)
 
 @app.route('/content')
 def content():
