@@ -18,13 +18,13 @@
     <div id="carouselExampleControls" class="carousel slide carousel-fade mt-3" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active ">
-          <img src="/static/images/newai.jpeg" class="d-block w-100" alt="AI">
+          <img src="/static/images/ai.jpg" class="d-block w-100" alt="AI">
         </div>
         <div class="carousel-item">
           <img src="/static/images/bmw.jpg" class="d-block w-100" alt="bmw">
         </div>
         <div class="carousel-item">
-          <img src="/static/images/benz.jpg" class="d-block w-100" alt="benz">
+          <img src="/static/images/ai.jpg" class="d-block w-100" alt="benz">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -42,8 +42,8 @@
         <form  action="/predict" method="POST">          
           <div class="form-row m-2">
             <div class="form-group col-md-6">
-              <label for="make">make</label>
-              <select id="make" class="form-control" required>
+              <label for="make" >make</label>
+              <select id="make" name = "make" class="form-control" required>
                 <option>ford</option>
                 <option>toyota</option>
                 <option>hyundai</option>
@@ -53,8 +53,8 @@
               </select>
             </div>
             <div class="form-group col-md-6">
-              <label for="model">Model</label>
-              <select id="model" class="form-control" required>
+              <label for="model" name = "model">model</label>
+              <select id="model" name = "model" class="form-control" required>
                 <option>Focus</option>
                 <option>Fiesta</option>
                 <option>Puma<option>
@@ -83,39 +83,41 @@
           <div class="form-row m-2">
             <div class="form-group col-md-4">
               <label for="mpg">mpg</label>
-              <input type= "number" class= "form-control" id="mpg" placeholder="mpg" required/>
+              <input type= "number" name = "mpg" class= "form-control" id="mpg" placeholder="mpg" required/>
             </div>
             <div class="form-group col-md-4">
               <label for="mileage">mileage</label>
-              <input type= "number" class= "form-control" id="mileage" placeholder="mileage" required/>
+              <input type= "number" name="mileage" class= "form-control" id="mileage" placeholder="mileage" required/>
             </div>
             <div class="form-group col-md-4">
               <label for="date">year</label>
-             <select id="year" class="form-control" required>
+             <select id="year" name="year" class="form-control" required>
                </select>
             </div>
           </div>
           <div class="form-row m-2">
             <div class="form-group col-md-4">
               <label for="transmission">transmission</label>
-              <select id= "transmission" class="form-control" required>
+              <select id= "transmission" name ="transmission" class="form-control" required>
                 <option>Manual</option>
                 <option>Automatic</option>
                 <option>Semi- Automatic</option>
               </select>
             </div>
             <div class="form-group col-md-4">
-              <label for="fuel">Fuel</label>
-              <select id= "fuel" class="form-control" required id= "fuel">
+              <label for="fuel">fuel</label>
+              <select id= "fuel" name = "fuel" class="form-control" required id= "fuel">
                 <option>Petrol</option>
                 <option>Diesel</option>
                 <option>Hybrid</option>
                 <option>Electric</option>
               </select>
+              <label for = "enginesize">Engine Size</label>
+              <input name = "enginesize" class= "form-control" id="enginesize" placeholder="1.5"  type= "number" required/>
             </div>
             <div class="form-group col-md-4">
-              <label for="tax">Tax</label>
-              <input type="number" class="form-control" id="Tax"/>
+              <label for="tax">tax</label>
+              <input type="number" name = "tax" class="form-control" id="Tax"/>
             </div>
           </div>
          <div class= "form-row m-2">

@@ -29,37 +29,48 @@ trans_transformer = pickle.load(trans_pickle_in)
 def hello():
     return 'welcome!'
 
-@app.route('/predict/<form>', methods = ['POST'])
+@app.route('/predict', methods = ["GET","POST"])
 def predict_price():
-    web_make = request.form['make']
-    mke = int(make_transformer.transform([web_make])[0])
+    if request.method == "POST":
+        web_make = request.form['make']
+        
+    
+        mke = int(make_transformer.transform([web_make])[0])
 
-    web_model = request.form['model']
-    mdel = int(model_transformer.transform([web_model])[0])
+        web_model = request.form['model']
+        mdel = int(model_transformer.transform([web_model])[0])
 
-    yr = int(request.form['year'])
+        yr = int(request.form['year'])
 
-    web_trans = request.form['transmission']
-    trans = int(trans_transformer.transform([web_trans])[0])
+        web_trans = request.form['transmission']
+        trans = int(trans_transformer.transform([web_trans])[0])
 
-    miles = int(request.form['mileage'])
+        miles = int(request.form['mileage'])
 
-    web_fuel = request.form['fuel']
-    fuel = int(fuel_transformer.transform([web_fuel])[0])
+        web_fuel = request.form['fuel']
+        fuel = int(fuel_transformer.transform([web_fuel])[0])
 
-    engine=float(request.form['engineSize'])
+        engine=float(request.form['enginesize'])
 
-    tx = float(request.form['tax'])
+        tx = int(request.form['tax'])
 
-    mpgal = float(request.form['mpg'])
+        mpgal = float(request.form['mpg'])
 
-    data = {'year':yr,'transmission':1,'mileage':miles,'fuelType':fuel,'tax':tx,
+        data = {'year':yr,'transmission':1,'mileage':miles,'fuelType':fuel,'tax':tx,
                                'mpg':mpgal,'engineSize':engine,'make':mke,'model':mdel}
-    test_df = pd.DataFrame(data,index=[0])
-    predicted_price = predictor.predict(test_df)[0]
+        test_df = pd.DataFrame(data,index=[0])
+        predicted_price = predictor.predict(test_df)[0]
+        ##return '<h1>The predicted price is {{ predicted_price }} </h1>'
+        return render_template('test.html', prediction=str(predicted_price))
 
-    return render_template('index.html', prediction=str(predicted_price))
+    
+    ##return render_template('index.html', prediction=str(predicted_price))"""
+    #print(tx)
+    #return render_template('result.html',predicted_price=tx)
+    
     ##return "the predicted car price is " + str(predicted_price)
+    else:
+        return render_template('index.html')
 
 @app.route('/content')
 def content():
