@@ -18,13 +18,13 @@
     <div id="carouselExampleControls" class="carousel slide carousel-fade mt-3" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active ">
-          <img src="/static/images/newai.jpeg" class="d-block w-100" alt="AI">
+          <img src="/static/images/ai.jpg" class="d-block w-100" alt="AI">
         </div>
         <div class="carousel-item">
           <img src="/static/images/bmw.jpg" class="d-block w-100" alt="bmw">
         </div>
         <div class="carousel-item">
-          <img src="/static/images/benz.jpg" class="d-block w-100" alt="benz">
+          <img src="/static/images/ai.jpg" class="d-block w-100" alt="benz">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -39,67 +39,92 @@
     <div class="card mt-3">
       <div class="card-body bg-light">
         <h5 class="text-center m-2">Please fill out this form to predict the car price</h5>
-        <form>
+        <form  action="/predict" method="POST">          
           <div class="form-row m-2">
             <div class="form-group col-md-6">
-              <label for="make">Make</label>
-              <select id="make" class="form-control" required>
-                <option>Ford</option>
-                <option>Toyota</option>
+              <label for="make" >make</label>
+              <select id="make" name = "make" class="form-control" required>
+                <option>ford</option>
+                <option>toyota</option>
+                <option>hyundai</option>
+                <option>vw</option>
+                <option>vx</option>
+                <option>skoda</option>
               </select>
             </div>
             <div class="form-group col-md-6">
-              <label for="model">Model</label>
-              <select id="model" class="form-control" required>
+              <label for="model" name = "model">model</label>
+              <select id="model" name = "model" class="form-control" required>
                 <option>Focus</option>
                 <option>Fiesta</option>
+                <option>Puma<option>
+                <option>Kuga<option>
+                <option>EcoSport<option>
+                <option>C-MAX<option>
+                <option>Mondeo<option>
+                <option>Ka+<option>
+                <option>Tourneo Custom<option>
+                <option>B-MAX<option>
+                <option>Edge<option>
+                <option>Tourneo Connect<option>
+                <option>Grand C-MAX<option>
+                <option>KA<option>
+                <option>Galaxy<option>
+                <option>Mustang<option>
+                <option>Grand Tourneo Connect<option>
+                <option>Fusion<option>
+                <option>Ranger<option>
+                <option>Streetka<option>
+                <option>Escort<option>
+                <option>Transit Tourneo<option>
                </select>
             </div>
           </div>
           <div class="form-row m-2">
             <div class="form-group col-md-4">
-              <label for="mpg">Mpg</label>
-              <input type= "number" class= "form-control" id="mpg" placeholder="mpg" required/>
+              <label for="mpg">mpg</label>
+              <input type= "number" step ="0.01" name = "mpg" class= "form-control" id="mpg" placeholder="mpg" required/>
             </div>
             <div class="form-group col-md-4">
-              <label for="mileage">Mileage</label>
-              <input type= "number" class= "form-control" id="mileage" placeholder="mileage" required/>
+              <label for="mileage">mileage</label>
+              <input type= "number" name="mileage" class= "form-control" id="mileage" placeholder="mileage" required/>
             </div>
             <div class="form-group col-md-4">
-              <label for="date">Year</label>
-             <select id="year" class="form-control" required>
+              <label for="date">year</label>
+             <select id="year" name="year" class="form-control" required>
                </select>
             </div>
           </div>
           <div class="form-row m-2">
             <div class="form-group col-md-4">
-              <label for="transmission">Transmission</label>
-              <select id= "transmission" class="form-control" required>
+              <label for="transmission">transmission</label>
+              <select id= "transmission" name ="transmission" class="form-control" required>
                 <option>Manual</option>
                 <option>Automatic</option>
                 <option>Semi- Automatic</option>
               </select>
             </div>
             <div class="form-group col-md-4">
-              <label for="fuel">Fuel</label>
-              <select id= "fuel" class="form-control" required id= "fuel">
+              <label for="fuel">fuel</label>
+              <select id= "fuel" name = "fuel" class="form-control" required id= "fuel">
                 <option>Petrol</option>
                 <option>Diesel</option>
                 <option>Hybrid</option>
                 <option>Electric</option>
               </select>
+              <label for = "enginesize">Engine Size</label>
+              <input name = "enginesize" class= "form-control" id="enginesize" placeholder="1.5"  type="number" step ="0.01" required/>
             </div>
             <div class="form-group col-md-4">
-              <label for="Tax">Tax</label>
-              <input type="number" class="form-control" id="Tax"/>
+              <label for="tax">tax</label>
+              <input type="number" step ="0.01" name = "tax" class="form-control" id="Tax" required/>
             </div>
           </div>
          <div class= "form-row m-2">
            <div class="form-group col-md text-center">
-            <button class= "btn btn-primary btn-lg" type= "button">Submit</button>
+            <button class= "btn btn-primary btn-lg" type= "submit" value = "Submit">Submit</button>
            </div>
-           
-         </div>
+          </div>
         </form>
       </div>
     </div>
