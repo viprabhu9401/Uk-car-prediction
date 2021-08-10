@@ -61,7 +61,7 @@ def predict_price():
         test_df = pd.DataFrame(data,index=[0])
         predicted_price = predictor.predict(test_df)[0]
         ##return '<h1>The predicted price is {{ predicted_price }} </h1>'
-        return render_template('test.html', prediction=str(predicted_price))
+        return render_template('result.html', prediction=str(predicted_price))
 
     
     ##return render_template('index.html', prediction=str(predicted_price))"""
