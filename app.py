@@ -52,7 +52,7 @@ def predict_price():
 
         engine=float(request.form['enginesize'])
 
-        tx = int(request.form['tax'])
+        tx = float(request.form['tax'])
 
         mpgal = float(request.form['mpg'])
 
