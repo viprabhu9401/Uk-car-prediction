@@ -1,18 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<form  action="/index" >
 <body>
-    <form  action="/index" >
-      <div class="container">
-        <div id="carouselExampleControls" class="carousel slide carousel-fade mt-3" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active ">
-              <img src="/static/images/bmw.jpg" class="d-block w-100" alt="bmw">
-            </div>
-        </div>
-      <div class="text-center mt-3">
-        <h1 class="text-light mt-3">The predicted price for the car is {{prediction}}</h1>
-        <button class= "btn btn-primary btn-lg text-center" type= "submit" value = "Submit">Home</button>
+  <div class="container">
+    <div class="container">
+      <div id="carouselExampleControls" class="carousel slide carousel-fade mt-3" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active ">
+            <img src="/static/images/bmw.jpg" class="d-block w-100" alt="bmw">
+          </div>
       </div>
-      </div>
+    <div class="text-center mt-3">
+      <h1 class="text-light mt-3">The predicted price for the car is {{prediction}}</h1>
+      <button class= "btn btn-primary btn-lg text-center" type= "submit" value = "Submit">Home</button>
     </div>
-  </form>
-   
-  </body>
+    
+  </div>
