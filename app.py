@@ -74,6 +74,7 @@ def predict_price():
                                'mpg':mpgal,'engineSize':engine,'make':mke,'model':mdel}
             test_df = pd.DataFrame(data,index=[0])
             predicted_price = round(float(prem_predictor.predict(test_df)[0]),2)
+            error_price = predicted_price*8.05/100
 
         else:
              mke = int(make_transformer.transform([web_make])[0])
@@ -84,9 +85,10 @@ def predict_price():
                                 'mpg':mpgal,'engineSize':engine,'make':mke,'model':mdel}
              test_df = pd.DataFrame(data,index=[0])
              predicted_price = round(float(predictor.predict(test_df)[0]),2)
+             error_price = predicted_price*10.05/100
 
 
-        error_price = predicted_price*2.04/100
+        
         min_price = round((predicted_price - error_price),2)
         max_price = round((predicted_price + error_price),2)
         ##return '<h1>The predicted price is {{ predicted_price }} </h1>'
@@ -94,11 +96,7 @@ def predict_price():
         image_name=web_make)
 
     
-    ##return render_template('index.html', prediction=str(predicted_price))"""
-    #print(tx)
-    #return render_template('result.html',predicted_price=tx)
-    
-    ##return "the predicted car price is " + str(predicted_price)
+
     else:
         return render_template('index.html')
 
