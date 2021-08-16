@@ -39,6 +39,26 @@ $(document).ready(function () {
       make: "skoda",
       model: ["Octavia", "Citigo", "Yeti Outdoor", "Superb", "Kodiaq", "Rapid",
       "Karoq", "Fabia", "Yeti", "Scala", "Roomster", "Kamiq"],
+    },
+    {
+      make: "audi",
+      model: ["A1", "A6", "A4", "A3", "Q3", "Q5", "A5", "S4", "Q2", "A7", "TT",
+      "Q7", "RS6", "RS3", "A8", "Q8", "RS4", "RS5", "R8", "SQ5", "S8",
+      "SQ7", "S3", "S5", "A2", "RS7"],
+    },
+    {
+      make: "merc",
+      model: ["SLK", "S Class", "SL CLASS", "G Class", "GLE Class", "GLA Class",
+      "A Class", "B Class", "GLC Class", "C Class", "E Class",
+      "GL Class", "CLS Class", "CLC Class", "CLA Class", "V Class",
+      "M Class", "CL Class", "GLS Class", "GLB Class", "X-CLASS", "180",
+      "CLK", "R Class", "230", "220", "200"],
+    },
+    {
+      make: "bmw",
+      model: ["5 Series", "6 Series", "1 Series", "7 Series", "2 Series",
+      "4 Series", "X3", "3 Series", "X5", "X4", "i3", "X1", "M4", "X2",
+      "X6", "8 Series", "Z4", "X7", "M5", "i8", "M2", "M3", "M6", "Z3"],
     }
   ];
  

@@ -44,49 +44,54 @@ trans_pickle_in = open('trans.pkl','rb')
 trans_transformer = pickle.load(trans_pickle_in)
 
 ## loading the transmission encoder for premium cars
-
+premTrans_pickle_in = open('premTrans.pkl','rb')
+premTrans_transformer = pickle.load(premTrans_pickle_in)
 
 
 @app.route('/')
 def hello():
-    return 'welcome!'
+    return render_template('index.html')
 
 @app.route('/predict', methods = ["GET","POST"])
 def predict_price():
     if request.method == "POST":
         web_make = request.form['make'].lower()
-        
-    
-        mke = int(make_transformer.transform([web_make])[0])
-
         web_model = request.form['model']
-        mdel = int(model_transformer.transform([web_model])[0])
-
         yr = int(request.form['year'])
-
         web_trans = request.form['transmission']
-        trans = int(trans_transformer.transform([web_trans])[0])
-
         miles = int(request.form['mileage'])
-
         web_fuel = request.form['fuel']
-        fuel = int(fuel_transformer.transform([web_fuel])[0])
-
         engine=float(request.form['enginesize'])
-
         tx = float(request.form['tax'])
-
         mpgal = float(request.form['mpg'])
 
-        data = {'year':yr,'transmission':1,'mileage':miles,'fuelType':fuel,'tax':tx,
+        if (web_make == "merc") or (web_make=="audi") or (web_make=="bmw"):
+            mke = int(premMake_transformer.transform([web_make])[0])
+            mdel = int(premModel_transformer.transform([web_model])[0])
+            trans = int(premTrans_transformer.transform([web_trans])[0])
+            fuel = int(premFuel_transformer.transform([web_fuel])[0])
+            data = {'year':yr,'transmission':1,'mileage':miles,'fuelType':fuel,'tax':tx,
                                'mpg':mpgal,'engineSize':engine,'make':mke,'model':mdel}
-        test_df = pd.DataFrame(data,index=[0])
-        predicted_price = round(float(predictor.predict(test_df)[0]),2)
+            test_df = pd.DataFrame(data,index=[0])
+            predicted_price = round(float(prem_predictor.predict(test_df)[0]),2)
+
+        else:
+             mke = int(make_transformer.transform([web_make])[0])
+             mdel = int(model_transformer.transform([web_model])[0])
+             trans = int(trans_transformer.transform([web_trans])[0])
+             fuel = int(fuel_transformer.transform([web_fuel])[0])
+             data = {'year':yr,'transmission':1,'mileage':miles,'fuelType':fuel,'tax':tx,
+                                'mpg':mpgal,'engineSize':engine,'make':mke,'model':mdel}
+             test_df = pd.DataFrame(data,index=[0])
+             predicted_price = round(float(predictor.predict(test_df)[0]),2)
+
+
         error_price = predicted_price*2.04/100
         min_price = round((predicted_price - error_price),2)
         max_price = round((predicted_price + error_price),2)
         ##return '<h1>The predicted price is {{ predicted_price }} </h1>'
-        return render_template('result.html', prediction=str(predicted_price), min_price=str(min_price),max_price=str(max_price))
+        return render_template('result.html', prediction=str(predicted_price), min_price=str(min_price),max_price=str(max_price),
+        image_name=web_make)
 
     
     ##return render_template('index.html', prediction=str(predicted_price))"""
@@ -97,17 +102,12 @@ def predict_price():
     else:
         return render_template('index.html')
 
-@app.route('/content')
-def content():
-    return 'The content page for the application - first flast app code'
+
 
 @app.route('/aboutpage')
 def about():
     return 'about page content'
 
-@app.route('/htmpage1')
-def htmpage1():
-    return '<h1>This is the firt html output line from a python app</h1>'
 
 @app.route('/index')
 def index():

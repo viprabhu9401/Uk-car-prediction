@@ -18,11 +18,12 @@
       <div id="carouselExampleControls" class="carousel slide carousel-fade mt-3" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active ">
-            <img src="/static/images/bmw.jpg" class="d-block w-100" alt="bmw">
+            <img src="/static/images/{{image_name}}.png" class="d-block w-100" alt="bmw">
           </div>
       </div>
     <div class="text-center mt-3">
-      <h1 class="text-light mt-3">The predicted price for the car is {{prediction}}</h1>
+      <h1 class="text-light mt-3">The Ideal Price for the car of this kind would be {{prediction}} pounds</h1>
+      <h1 class="text-light mt-3">Based on the condtion the price can be from  {{min_price}} to {{max_price}}</h1>
       <button class= "btn btn-primary btn-lg text-center" type= "submit" value = "Submit">Home</button>
     </div>
     
