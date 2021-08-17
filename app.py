@@ -2,7 +2,7 @@ import flask
 import pandas as pd
 import pickle
 import sklearn.preprocessing._label
-from flask import Flask,render_template, request, redirect, url_for
+from flask import Flask,render_template, request, redirect, url_for, abort
 
 app = Flask(__name__)
 ## loading the model
@@ -46,6 +46,10 @@ trans_transformer = pickle.load(trans_pickle_in)
 ## loading the transmission encoder for premium cars
 premTrans_pickle_in = open('premTrans.pkl','rb')
 premTrans_transformer = pickle.load(premTrans_pickle_in)
+
+@app.errorhandler(404)
+def handle_404_error(error):
+    return render_template('error.html', Error='404 page not found')
 
 
 @app.route('/')
