@@ -93,7 +93,7 @@ def predict_price():
         max_price = round((predicted_price + error_price),2)
         ##return '<h1>The predicted price is {{ predicted_price }} </h1>'
         return render_template('result.html', prediction=str(predicted_price), min_price=str(min_price),max_price=str(max_price),
-        image_name=web_make)
+        image_name=web_make, auto_make = web_make, km=miles, auto_yr = yr, auto_mdl = web_model)
 
     
 
