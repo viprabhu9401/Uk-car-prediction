@@ -52,6 +52,7 @@ def handle_404_error(error):
     return render_template('error.html', Error='404 page not found')
 
 
+
 @app.route('/')
 def hello():
     return render_template('index.html')
